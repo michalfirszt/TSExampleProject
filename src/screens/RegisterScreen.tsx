@@ -1,11 +1,14 @@
 import React from "react";
 import { Text, View } from "react-native";
+import { useRoute } from "@react-navigation/native";
 
-import { RootStackScreenProps } from "../navigation/types";
+import { ScreenRouteProps } from "../navigation/types";
 
-type Props = RootStackScreenProps<"Register">;
+type RegisterScreenRouteProp = ScreenRouteProps<"Register">;
 
-export const RegisterScreen = ({ route }: Props): JSX.Element => {
+export const RegisterScreen = (): JSX.Element => {
+  const route = useRoute<RegisterScreenRouteProp>();
+
   return (
     <View>
       <Text>{route.name}</Text>

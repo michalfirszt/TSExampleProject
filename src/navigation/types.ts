@@ -1,9 +1,17 @@
 import type {
+  RouteProp,
   CompositeScreenProps,
   NavigatorScreenParams,
+  CompositeNavigationProp,
 } from "@react-navigation/native";
-import type { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type {
+  BottomTabScreenProps,
+  BottomTabNavigationProp,
+} from "@react-navigation/bottom-tabs";
+import type {
+  NativeStackScreenProps,
+  NativeStackNavigationProp,
+} from "@react-navigation/native-stack";
 
 export type MainTabsParamList = {
   Settings: undefined;
@@ -24,3 +32,13 @@ export type MainTabsScreenProps<T extends keyof MainTabsParamList> =
     BottomTabScreenProps<MainTabsParamList, T>,
     RootStackScreenProps<keyof RootStackParamList>
   >;
+
+export type ScreenRouteProps<T extends keyof RootStackParamList> = RouteProp<
+  RootStackParamList,
+  T
+>;
+
+export type ScreenNavigationProps = CompositeNavigationProp<
+  NativeStackNavigationProp<RootStackParamList>,
+  BottomTabNavigationProp<MainTabsParamList>
+>;
